@@ -6,12 +6,15 @@ using namespace std;
 const int N = 4;
 string arr[N];
 
-void in() {
+void inp() {
     for (int i = 0; i < N; i++) {
         string a;
         getline(cin, a);
         if (a == "") {
             break;
+        }
+        for (int q = 0; q < a.length(); q++) {
+            a[q] = (char)tolower(a[q]);
         }
         arr[i] = a;
         
@@ -50,7 +53,7 @@ void out() {
 
 int main() {
 
-in();
+inp();
 sort();
 out();
     
