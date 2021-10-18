@@ -3,20 +3,41 @@
 #include <ctype.h>
 using namespace std;
 
-const int N = 4;
+const int N = 100;
 string arr[N];
 
+bool isupper(char k) {
+  if (k >= 'A' && k <= 'Z') {
+    return true;
+  } else {
+    return false;
+  }
+}
+
 void inp() {
-    for (int i = 0; i < N; i++) {
+    for (int i = 0; i < N;) {
         string a;
+        int p = 0;
+        int h = 0;
         getline(cin, a);
         if (a == "") {
             break;
         }
         for (int q = 0; q < a.length(); q++) {
-            a[q] = (char)tolower(a[q]);
+          if (isupper(a[q])) {
+              p++;
+            }
+
+          if (a[q] == ' ') {
+              h++;
+            }
+          a[q] = (char)tolower(a[q]);   
         }
-        arr[i] = a;
+        if (p == 3 && h == 2) {
+          arr[i] = a;
+          i++;
+        }
+        
         
     }
 }
@@ -45,7 +66,14 @@ void out() {
         }
     }
     for (int i = N - p; i >= 0; i--) {
-        cout << arr[i] << endl;
+        string u = arr[i];
+        u[0] = (char)toupper(u[0]);   
+        for (int q = 0; q < u.length(); q++) {
+          if (u[q] == ' ') {
+            u[q + 1] = (char)toupper(u[q + 1]);   
+          }
+        }
+        cout << u << endl;
     }
 }
 
