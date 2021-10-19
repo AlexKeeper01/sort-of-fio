@@ -28,7 +28,7 @@ void inp() {
               p++;
             }
 
-          if (a[q] == ' ') {
+          if (a[q] == ' ' && isupper(a[q + 1])) {
               h++;
             }
           a[q] = (char)tolower(a[q]);   
